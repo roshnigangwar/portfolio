@@ -909,26 +909,560 @@ section {
 }
 
 /* ==========================================================================
-   HIRE ME / FOOTER
+   HIRE ME / COLLABORATION SECTION
    ========================================================================== */
-.footer-cta {
-  text-align: center;
-  padding: 80px 0;
-  border-top: 1px solid rgba(255,255,255,0.05);
+.hire-me-section {
+  padding: 96px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
 }
-.footer-cta h2 {
+
+.hire-header-wrap {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.hire-title {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.hire-subtitle {
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Three Value Pillars */
+.hire-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.hire-pillar-card {
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px 26px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hire-pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 16px 36px -12px rgba(99, 102, 241, 0.2);
+}
+
+.hire-pillar-card.featured-pillar {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.08) 0%, rgba(24, 24, 27, 0.8) 100%);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.pillar-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--accent-main), #818cf8);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.pillar-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-glow);
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.pillar-title {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: 19px;
   font-weight: 700;
   color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.pillar-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pillar-tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Main Interactive Workstation Area */
+.hire-interactive-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* Left: Contact Details Card */
+.hire-contact-card {
+  background: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hire-contact-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.avatar-mini {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-main);
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-mini-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border: 2px solid #18181b;
+  border-radius: 50%;
+}
+
+.contact-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.contact-role {
+  font-size: 14px;
+  color: var(--accent-glow);
+  font-weight: 500;
+}
+
+.contact-intro {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
   margin-bottom: 24px;
 }
-.footer-cta p {
+
+.contact-intro strong {
+  color: #fff;
+}
+
+.contact-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: background var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.contact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.contact-text-box {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.contact-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contact-val {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.copy-email-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
-  font-size: 18px;
-  margin-bottom: 40px;
-  max-width: 500px;
-  margin-inline: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.copy-email-btn:hover {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--accent-main);
+}
+
+.copy-tooltip {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #27272a;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copy-email-btn:hover .copy-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.copy-email-btn.copied {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.hire-action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.contact-social-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.social-row-label {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.contact-social-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: all var(--transition-smooth);
+}
+
+.contact-social-link:hover {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--accent-main);
+  transform: translateY(-2px);
+}
+
+/* Right: Inquiry / Message Form Card */
+.hire-form-card {
+  background: rgba(24, 24, 27, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-card-header {
+  margin-bottom: 24px;
+}
+
+.form-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.form-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hire-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.form-group label .req {
+  color: #f87171;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap i {
+  position: absolute;
+  left: 14px;
+  color: var(--text-dim);
+  font-size: 14px;
+  pointer-events: none;
+  transition: color var(--transition-smooth);
+}
+
+.input-wrap input,
+.input-wrap select,
+.input-wrap textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 14px 12px 42px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), background var(--transition-smooth);
+  outline: none;
+}
+
+.input-wrap select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 36px;
+}
+
+.select-wrap::after {
+  content: '\f107';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 14px;
+  color: var(--text-dim);
+  pointer-events: none;
+  font-size: 13px;
+}
+
+.input-wrap select option {
+  background-color: #18181b;
+  color: #fff;
+}
+
+.input-wrap.textarea-wrap {
+  align-items: flex-start;
+}
+
+.input-wrap.textarea-wrap i {
+  top: 14px;
+}
+
+.input-wrap textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+.input-wrap input:focus,
+.input-wrap select:focus,
+.input-wrap textarea:focus {
+  border-color: var(--accent-main);
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.input-wrap input:focus + i,
+.input-wrap:focus-within i {
+  color: var(--accent-glow);
+}
+
+.input-wrap input::placeholder,
+.input-wrap textarea::placeholder {
+  color: rgba(161, 161, 170, 0.5);
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.btn-submit-hire {
+  padding: 12px 28px;
+  font-size: 15px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  color: #09090b;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.15);
+}
+
+.btn-submit-hire:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.35);
+}
+
+.btn-submit-hire i {
+  transition: transform var(--transition-smooth);
+}
+
+.btn-submit-hire:hover i {
+  transform: translateX(4px);
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-feedback {
+  display: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-feedback.success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .site-footer {
@@ -1061,6 +1595,17 @@ section {
     width: 100%;
     flex: auto;
   }
+  .hire-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hire-interactive-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hire-title {
+    font-size: 30px;
+  }
 }
 @media (max-width: 768px) {
   .floating-nav {
@@ -1127,4 +1672,24 @@ section {
   .cert-title {
     font-size: 19px;
   }
+  .hire-contact-card, .hire-form-card {
+    padding: 24px 18px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .form-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .btn-submit-hire {
+    width: 100%;
+    justify-content: center;
+  }
+  .hire-action-row {
+    flex-direction: column;
+  }
 }
+

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectsFilterAndModal();
   initScrollSpyAndNav();
   initTypewriterEffect();
+  initHireMeSection();
 });
 
 /* ==========================================================================
@@ -218,4 +219,96 @@ function initScrollSpyAndNav() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   5. HIRE ME SECTION INTERACTIONS
+   ========================================================================== */
+function initHireMeSection() {
+  // 1. Copy Email Button Interaction
+  const copyBtn = document.getElementById('copy-email-btn');
+  const copyIcon = document.getElementById('copy-icon');
+  const copyTooltip = document.getElementById('copy-tooltip');
+  const emailToCopy = 'roshnigangwar@gmail.com';
+
+  if (copyBtn && copyIcon && copyTooltip) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(emailToCopy);
+        copyIcon.className = 'fas fa-check';
+        copyTooltip.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+
+        setTimeout(() => {
+          copyIcon.className = 'far fa-copy';
+          copyTooltip.textContent = 'Copy';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        // Fallback for clipboard if not allowed
+        const tempInput = document.createElement('input');
+        tempInput.value = emailToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        copyIcon.className = 'fas fa-check';
+        copyTooltip.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+
+        setTimeout(() => {
+          copyIcon.className = 'far fa-copy';
+          copyTooltip.textContent = 'Copy';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  }
+
+  // 2. Hire Me Inquiry Form Handling
+  const hireForm = document.getElementById('hire-form');
+  const formFeedback = document.getElementById('form-feedback');
+
+  if (hireForm) {
+    hireForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('sender-name')?.value.trim() || '';
+      const email = document.getElementById('sender-email')?.value.trim() || '';
+      const oppType = document.getElementById('opportunity-type')?.value || 'Opportunity Inquiry';
+      const subjectInput = document.getElementById('sender-subject')?.value.trim() || '';
+      const message = document.getElementById('sender-message')?.value.trim() || '';
+
+      const subject = encodeURIComponent(
+        subjectInput ? `[${oppType}] ${subjectInput}` : `[${oppType}] Inquiry from ${name}`
+      );
+
+      const bodyText = encodeURIComponent(
+        `Hi Roshani,\n\n${message}\n\n---\nSender: ${name}\nEmail: ${email}\nOpportunity: ${oppType}`
+      );
+
+      const mailtoUrl = `mailto:roshnigangwar@gmail.com?subject=${subject}&body=${bodyText}`;
+
+      if (formFeedback) {
+        formFeedback.className = 'form-feedback success';
+        formFeedback.innerHTML = `
+          <i class="fas fa-circle-check" style="font-size: 18px; color: #10b981;"></i>
+          <div>
+            <strong>Thank you, ${name}!</strong> Opening your email client to send your message to Roshani Gangwar.
+          </div>
+        `;
+      }
+
+      // Open mail client
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 500);
+
+      // Reset form fields
+      setTimeout(() => {
+        hireForm.reset();
+      }, 1500);
+    });
+  }
 }
